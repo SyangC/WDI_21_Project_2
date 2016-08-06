@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ANovelIdea</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><%= link_to "Home", statics_home_path %></li>
+          <li><%= link_to "About", statics_about_path %></li>
+          <li><%= link_to "Contact", statics_contact_path %></li>
+          <% if current_user %>
+            <li><%= link_to "Edit profile", edit_user_registration_path%></li>
+            <li><%= link_to "Log out", destroy_user_session_path, method: :delete%></li>
+          <% else %>
+            <li><%= link_to "Register", new_user_registration_path %></li>
+            <li><%= link_to "Log in", new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </main>
+  </body>
+</html>
