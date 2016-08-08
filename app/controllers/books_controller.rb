@@ -12,6 +12,8 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     session[:current_book_id] = @book.id
+    @book = Book.find_by(id: params[:id])
+    @comments = @book.comments.all
   end
 
   # GET /books/new
@@ -61,6 +63,12 @@ class BooksController < ApplicationController
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def add_new_comment
+    book = Book.find(params[:id])
+    book.comments << Book.new(params[:comment])
+    redirect_to :action => :show, :id => book
   end
 
   private

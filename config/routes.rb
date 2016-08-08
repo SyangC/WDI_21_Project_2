@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :recommendations
   root "statics#home"
+
+  resources :recommendations
 
   get 'statics/home'
 
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
   get 'statics/contact'
 
   get 'statics/browse'
+
+  post 'comments' => 'comments#create', as: "create_comment"
 
   devise_for :users
 

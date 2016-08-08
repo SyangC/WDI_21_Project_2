@@ -30,6 +30,22 @@
   </ul>
 </p>
 
+<div class="comment_list">
+  <% @comments.each do |comment| %>
+    <%= comment.comment %> <br>
+      <%= comment.user.username %> <br>
+        <br>
+    <% end %>
+</div>
+
+<div class="comment-section">
+  <%= form_tag create_comment_path, method: "post" do %>
+    <%= hidden_field_tag "id", @book.id %>
+      <%= text_area_tag :comment %>
+      <%= submit_tag "Submit" %>
+    <% end %>
+</div>
+
 <%= link_to 'New Recommendation', new_recommendation_path %>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |

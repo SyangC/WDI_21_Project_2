@@ -1,3 +1,4 @@
 class Recommendation < ApplicationRecord
-  has_and_belongs_to_many :books
+  belongs_to :book
+  has_many :types
 end
