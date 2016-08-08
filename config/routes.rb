@@ -1,22 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root 'statics#home'
-  
+
+  resources :recommendations
+  root "statics#home"
+
   get 'statics/home'
 
   get 'statics/about'
 
   get 'statics/contact'
 
-  resources :users
+  get 'statics/browse'
 
-  resources :recommendations
-
-  resources :types
-
-  resources :genres
+  devise_for :users
 
   resources :books
-
+  resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

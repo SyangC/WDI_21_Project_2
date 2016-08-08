@@ -1,2 +1,6 @@
-<h1>Recommendations#edit</h1>
-<p>Find me in app/views/recommendations/edit.html.erb</p>
+<h1>Editing Recommendation</h1>
+
+<%= render 'form', recommendation: @recommendation %>
+
+<%= link_to 'Show', @recommendation %> |
+<%= link_to 'Back', recommendations_path %>

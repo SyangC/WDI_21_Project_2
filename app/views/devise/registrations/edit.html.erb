@@ -4,8 +4,13 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
+    <%= f.text_field :first_name %>
   </div>
 
   <div class="field">
@@ -14,18 +19,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
-
-  <div class="field">
-    <%= f.label :image_url %><br />
-    <%= f.text_field :image_url %>
-  </div>
-
-  <div class="field">
-    <%= f.label :bio %><br />
+    <%= f.label :Biography %><br />
     <%= f.text_field :bio %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar_image %>
+    <%= f.file_field :avatar_image %>
   </div>
 
   <div class="field">

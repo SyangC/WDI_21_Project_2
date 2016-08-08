@@ -7,4 +7,8 @@ class StaticsController < ApplicationController
 
   def contact
   end
+
+  def browse
+    @books = Book.all
+  end
 end

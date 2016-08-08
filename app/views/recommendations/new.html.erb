@@ -1,2 +1,7 @@
-<h1>Recommendations#new</h1>
-<p>Find me in app/views/recommendations/new.html.erb</p>
+<h1>New Recommendation</h1>
+
+<p><%= @current_book.id %></p>
+
+<%= render 'form', recommendation: @recommendation %>
+
+<%= link_to 'Back', recommendations_path %>

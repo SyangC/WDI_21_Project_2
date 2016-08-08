@@ -15,9 +15,12 @@
           <li><%= link_to "Home", statics_home_path %></li>
           <li><%= link_to "About", statics_about_path %></li>
           <li><%= link_to "Contact", statics_contact_path %></li>
+          <li><%= link_to "Browse", statics_browse_path %></li>
           <% if current_user %>
-            <li><%= link_to "Edit profile", edit_user_registration_path%></li>
-            <li><%= link_to "Log out", destroy_user_session_path, method: :delete%></li>
+            <li><%= link_to "Your Recs", books_path %></li>
+            <li><%= link_to "New Rec", new_book_path %></li>
+
+            <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to "Register", new_user_registration_path %></li>
             <li><%= link_to "Log in", new_user_session_path %></li>

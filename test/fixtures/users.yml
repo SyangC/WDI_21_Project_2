@@ -4,12 +4,10 @@ one:
   username: MyString
   first_name: MyString
   last_name: MyString
-  image_url: MyString
   bio: MyString
 
 two:
   username: MyString
   first_name: MyString
   last_name: MyString
-  image_url: MyString
   bio: MyString

@@ -1,2 +1,14 @@
-<h1>Recommendations#show</h1>
-<p>Find me in app/views/recommendations/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @recommendation.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @recommendation.description %>
+</p>
+
+<%= link_to 'Edit', edit_recommendation_path(@recommendation) %> |
+<%= link_to 'Back', recommendations_path %>

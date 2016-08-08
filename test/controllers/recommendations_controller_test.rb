@@ -1,39 +1,48 @@
 require 'test_helper'
 
 class RecommendationsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @recommendation = recommendations(:one)
+  end
+
+  test "should get index" do
+    get recommendations_url
+    assert_response :success
+  end
+
   test "should get new" do
-    get recommendations_new_url
+    get new_recommendation_url
     assert_response :success
   end
 
-  test "should get create" do
-    get recommendations_create_url
-    assert_response :success
+  test "should create recommendation" do
+    assert_difference('Recommendation.count') do
+      post recommendations_url, params: { recommendation: { description: @recommendation.description, name: @recommendation.name } }
+    end
+
+    assert_redirected_to recommendation_url(Recommendation.last)
   end
 
-  test "should get update" do
-    get recommendations_update_url
+  test "should show recommendation" do
+    get recommendation_url(@recommendation)
     assert_response :success
   end
 
   test "should get edit" do
-    get recommendations_edit_url
+    get edit_recommendation_url(@recommendation)
     assert_response :success
   end
 
-  test "should get destroy" do
-    get recommendations_destroy_url
-    assert_response :success
+  test "should update recommendation" do
+    patch recommendation_url(@recommendation), params: { recommendation: { description: @recommendation.description, name: @recommendation.name } }
+    assert_redirected_to recommendation_url(@recommendation)
   end
 
-  test "should get index" do
-    get recommendations_index_url
-    assert_response :success
-  end
+  test "should destroy recommendation" do
+    assert_difference('Recommendation.count', -1) do
+      delete recommendation_url(@recommendation)
+    end
 
-  test "should get show" do
-    get recommendations_show_url
-    assert_response :success
+    assert_redirected_to recommendations_url
   end
-
 end

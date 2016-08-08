@@ -1,0 +1,11 @@
+<h1>Browse</h1>
+
+<div class="gallery">
+  <% @books.each do |book| %>
+    <div class="books">
+      <li><%= book.name %></li>
+      <li><%= book.author %></li>
+      <li><%= image_tag book.book_image %></li>
+    </div>
+  <% end %>
+</div>
