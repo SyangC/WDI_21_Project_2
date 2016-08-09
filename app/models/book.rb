@@ -1,8 +1,10 @@
 class Book < ApplicationRecord
-  belongs_to :user
+
   has_many :recommendations
 
   mount_uploader :book_image, BookImageUploader
-  
-  acts_as_commentable
+
+  belongs_to :creator, class_name: "User", foreign_key: "user_id"
+  has_and_belongs_to_many :commenters, class_name: "User", join_table: "books_users" 
+
 end

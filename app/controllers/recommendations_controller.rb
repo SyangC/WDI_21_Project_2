@@ -10,6 +10,8 @@ class RecommendationsController < ApplicationController
   # GET /recommendations/1
   # GET /recommendations/1.json
   def show
+    @recommendation = Recommendation.find_by(id: params[:id])
+    @comments = @recommendation.comments.all
   end
 
   # GET /recommendations/new
@@ -27,6 +29,7 @@ class RecommendationsController < ApplicationController
   def create
     current_book = Book.find_by_id(session[:current_book_id])
     @recommendation = current_book.recommendations.new(recommendation_params)
+    current_user.recommendations << @recommendation
     respond_to do |format|
       if @recommendation.save
         format.html { redirect_to @recommendation, notice: 'Recommendation was successfully created.' }
@@ -62,6 +65,24 @@ class RecommendationsController < ApplicationController
     end
   end
 
+  def upvote 
+    @recommendation = Recommendation.find(params[:id])
+    @recommendation.upvote_by current_user
+    redirect_to :back
+  end  
+
+  def downvote
+    @recommendation = Recommendation.find(params[:id])
+    @recommendation.downvote_by current_user
+    redirect_to :back
+  end
+
+  def add_new_comment
+    recommendation = Recommendation.find(params[:id])
+    recommendation.comments << Recommendation.new(params[:comment])
+    redirect_to :action => :show, :id => recommendation
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recommendation
@@ -70,6 +91,6 @@ class RecommendationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recommendation_params
-      params.require(:recommendation).permit(:name, :description, :book_id)
+      params.require(:recommendation).permit(:name, :description, :book_id, :type_id, :user_id)
     end
 end

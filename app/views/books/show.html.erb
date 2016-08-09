@@ -12,7 +12,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @book.user.username %>
+  <%= @book.creator.username %>
 </p>
 
 <p>
@@ -24,29 +24,24 @@
   <strong>Recommendations:</strong>
   <ul>
     <% @book.recommendations.each do |recommendation| %>
-      <li><%= recommendation.name %></li>
+      <li><%= recommendation.type.name %></li>
+      <li><%= link_to recommendation.name, recommendation_path(recommendation) %></li>
       <li><%= recommendation.description %></li>
+      <li>
+        Submitted <%= time_ago_in_words(recommendation.created_at) %> ago
+        by <%= recommendation.user.email %>
+      </li>
+      <%= link_to like_recommendation_path(recommendation), method: :put do %>
+        Upvote
+        <%= recommendation.get_upvotes.size %>
+      <% end %>
+
+      <%= link_to dislike_recommendation_path(recommendation), method: :put do %>
+        Downvote
+        <%= recommendation.get_downvotes.size %>
+      <% end %>
     <% end %>
   </ul>
 </p>
 
-<div class="comment_list">
-  <% @comments.each do |comment| %>
-    <%= comment.comment %> <br>
-      <%= comment.user.username %> <br>
-        <br>
-    <% end %>
-</div>
-
-<div class="comment-section">
-  <%= form_tag create_comment_path, method: "post" do %>
-    <%= hidden_field_tag "id", @book.id %>
-      <%= text_area_tag :comment %>
-      <%= submit_tag "Submit" %>
-    <% end %>
-</div>
-
 <%= link_to 'New Recommendation', new_recommendation_path %>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>

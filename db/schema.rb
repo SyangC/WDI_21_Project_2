@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808103414) do
+ActiveRecord::Schema.define(version: 20160808153607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20160808103414) do
     t.datetime "updated_at", null: false
     t.string   "book_image"
     t.index ["user_id"], name: "index_books_on_user_id", using: :btree
+  end
+
+  create_table "books_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -45,15 +50,17 @@ ActiveRecord::Schema.define(version: 20160808103414) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "book_id"
+    t.integer  "type_id"
+    t.integer  "user_id"
     t.index ["book_id"], name: "index_recommendations_on_book_id", using: :btree
+    t.index ["type_id"], name: "index_recommendations_on_type_id", using: :btree
+    t.index ["user_id"], name: "index_recommendations_on_user_id", using: :btree
   end
 
   create_table "types", force: :cascade do |t|
     t.string   "name"
-    t.integer  "recommendation_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["recommendation_id"], name: "index_types_on_recommendation_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,7 +85,22 @@ ActiveRecord::Schema.define(version: 20160808103414) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.string   "votable_type"
+    t.integer  "votable_id"
+    t.string   "voter_type"
+    t.integer  "voter_id"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
+  end
+
   add_foreign_key "books", "users"
   add_foreign_key "recommendations", "books"
-  add_foreign_key "types", "recommendations"
+  add_foreign_key "recommendations", "types"
+  add_foreign_key "recommendations", "users"
 end

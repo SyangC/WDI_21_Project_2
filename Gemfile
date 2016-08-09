@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'carrierwave', '0.10.0'
 gem 'acts_as_commentable'
+gem 'acts_as_votable'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :types
   root "statics#home"
-
-  resources :recommendations
 
   get 'statics/home'
 
@@ -18,5 +17,11 @@ Rails.application.routes.draw do
 
   resources :books
   resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :recommendations do 
+    member do
+      put "like", to: "recommendations#upvote"
+      put "dislike", to: "recommendations#downvote"
+    end
+  end
 end

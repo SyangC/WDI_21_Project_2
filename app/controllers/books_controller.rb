@@ -13,7 +13,6 @@ class BooksController < ApplicationController
   def show
     session[:current_book_id] = @book.id
     @book = Book.find_by(id: params[:id])
-    @comments = @book.comments.all
   end
 
   # GET /books/new
@@ -28,7 +27,9 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    @book = current_user.books.new(book_params)
+    @book = Book.new(book_params)
+
+    current_user.created_books << @book
 
     respond_to do |format|
       if @book.save
@@ -74,7 +75,7 @@ class BooksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
-      @book = current_user.books.find(params[:id])
+      @book = Book.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
