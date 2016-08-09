@@ -22,26 +22,42 @@
 
 <p>
   <strong>Recommendations:</strong>
-  <ul>
-    <% @book.recommendations.each do |recommendation| %>
-      <li><%= recommendation.type.name %></li>
-      <li><%= link_to recommendation.name, recommendation_path(recommendation) %></li>
-      <li><%= recommendation.description %></li>
-      <li>
-        Submitted <%= time_ago_in_words(recommendation.created_at) %> ago
-        by <%= recommendation.user.email %>
-      </li>
-      <%= link_to like_recommendation_path(recommendation), method: :put do %>
-        Upvote
-        <%= recommendation.get_upvotes.size %>
-      <% end %>
 
-      <%= link_to dislike_recommendation_path(recommendation), method: :put do %>
-        Downvote
-        <%= recommendation.get_downvotes.size %>
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Recommendation</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @book.recommendations.each do |recommendation| %>
+        <tr>
+          <td><%= recommendation.type.name %></td>
+          <td><%= link_to recommendation.name, recommendation_path(recommendation) %></td>
+          <td><%= recommendation.description %></td>
+          <td>
+            Submitted <%= time_ago_in_words(recommendation.created_at) %> ago
+            by <%= recommendation.user.email %>
+          </td>
+          <td>
+            <%= link_to like_recommendation_path(recommendation), method: :put do %>
+              Upvote
+              <%= recommendation.get_upvotes.size %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to dislike_recommendation_path(recommendation), method: :put do %>
+              Downvote
+              <%= recommendation.get_downvotes.size %>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
-    <% end %>
-  </ul>
+    </tbody>
+  </table>
 </p>
 
 <%= link_to 'New Recommendation', new_recommendation_path %>
