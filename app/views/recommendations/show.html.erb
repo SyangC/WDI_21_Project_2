@@ -15,18 +15,4 @@
 <% end %>
 <%= link_to 'Back', book_path(@current_book) %>
 
-<div class="comment_list">
-  <% @comments.each do |comment| %>
-    <%= comment.comment %> <br>
-      <%= link_to comment.user.username, user_path(comment.user_id) %> <br>
-        <br>
-    <% end %>
-</div>
-
-<div class="comment-section">
-  <%= form_tag create_comment_path, method: "post" do %>
-    <%= hidden_field_tag "id", @recommendation.id %>
-      <%= text_area_tag :comment %>
-      <%= submit_tag "Submit" %>
-    <% end %>
-</div>
+<%= render partial: "comments/template", locals: {commentable: @recommendation, new_comment: @comment} %> 

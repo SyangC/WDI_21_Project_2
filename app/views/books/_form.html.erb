@@ -26,6 +26,11 @@
     <%= f.file_field :book_image %>
   </div>
 
+  <div class="field">
+    <%= f.label :genre_id %>
+    <%= f.collection_select :genre_ids, Genre.all, :id, :name %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

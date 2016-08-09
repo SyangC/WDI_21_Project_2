@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808153607) do
+ActiveRecord::Schema.define(version: 20160809150615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,23 +25,36 @@ ActiveRecord::Schema.define(version: 20160808153607) do
     t.index ["user_id"], name: "index_books_on_user_id", using: :btree
   end
 
+  create_table "books_genres", id: false, force: :cascade do |t|
+    t.integer "genre_id", null: false
+    t.integer "book_id",  null: false
+  end
+
   create_table "books_users", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "book_id", null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "title",            limit: 50, default: ""
-    t.text     "comment"
-    t.string   "commentable_type"
     t.integer  "commentable_id"
-    t.integer  "user_id"
-    t.string   "role",                        default: "comments"
+    t.string   "commentable_type"
+    t.string   "title"
+    t.text     "body"
+    t.string   "subject"
+    t.integer  "user_id",          null: false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
-    t.index ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+    t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "recommendations", force: :cascade do |t|

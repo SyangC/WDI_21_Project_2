@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  resources :types
   root "statics#home"
 
   get 'statics/home'
@@ -17,6 +15,9 @@ Rails.application.routes.draw do
 
   resources :books
   resources :users
+  resources :comments
+  resources :types
+  resources :genres
 
   resources :recommendations do 
     member do

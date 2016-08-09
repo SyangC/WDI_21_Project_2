@@ -11,7 +11,7 @@ class RecommendationsController < ApplicationController
   # GET /recommendations/1.json
   def show
     @recommendation = Recommendation.find_by(id: params[:id])
-    @comments = @recommendation.comments.all
+    @new_comment = Comment.build_from(@recommendation, current_user.id, "")
     @current_book = Book.find_by_id(session[:current_book_id])
   end
 
