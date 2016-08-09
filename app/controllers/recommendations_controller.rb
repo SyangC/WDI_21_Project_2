@@ -12,6 +12,7 @@ class RecommendationsController < ApplicationController
   def show
     @recommendation = Recommendation.find_by(id: params[:id])
     @comments = @recommendation.comments.all
+    @current_book = Book.find_by_id(session[:current_book_id])
   end
 
   # GET /recommendations/new

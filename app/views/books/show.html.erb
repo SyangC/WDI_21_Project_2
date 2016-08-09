@@ -22,7 +22,6 @@
 
 <p>
   <strong>Recommendations:</strong>
-
   <table>
     <thead>
       <tr>
@@ -40,7 +39,7 @@
           <td><%= recommendation.description %></td>
           <td>
             Submitted <%= time_ago_in_words(recommendation.created_at) %> ago
-            by <%= recommendation.user.email %>
+            by <%= link_to recommendation.user.username, user_path(recommendation.user) %>
           </td>
           <td>
             <%= link_to like_recommendation_path(recommendation), method: :put do %>

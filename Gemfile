@@ -30,6 +30,8 @@ gem 'devise'
 gem 'carrierwave', '0.10.0'
 gem 'acts_as_commentable'
 gem 'acts_as_votable'
+gem 'ransack'
+gem 'rmagick'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
