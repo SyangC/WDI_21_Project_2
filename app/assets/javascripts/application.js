@@ -21,3 +21,45 @@ $(document).on('turbolinks:load', function() {
     $(this).closest('.comment').find('.reply-form').toggle();
   });
 });
+
+
+$(document).on('turbolinks:load', function() {
+
+  var $tbody = $('.users');
+  var $trs = $tbody.find('tr');
+
+
+  $('.sort').on('click', function() {
+    var button = this;
+    $trs.sort(function(a, b) {
+      if($(button).text() === "ASC") {
+        return $(a).data('searchstring') > $(b).data('searchstring');
+      } else {
+        return $(a).data('searchstring') < $(b).data('searchstring');
+      }
+    }).each(function() {
+      $(this).appendTo($tbody);
+    });
+
+    if($(button).text() === "ASC") {
+      $(button).text("DESC");
+    } else {
+      $(button).text("ASC");
+    }
+    return false;
+   });
+
+  $('.search').on('keyup', function() {
+    var input = this;
+    $trs.each(function() {
+      var searchString = $(input).val().toLowerCase();
+      var textToMatch = $(this).data('searchstring').toLowerCase();
+
+      if(textToMatch.match(searchString)) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  });
+});
