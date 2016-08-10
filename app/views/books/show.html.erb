@@ -1,4 +1,4 @@
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-8 col-md-offset-2 books">
 
   <p id="notice"><%= notice %></p>
 
@@ -37,17 +37,16 @@
         <tr>
           <th class="col-md-2">Category</th>
           <th class="col-md-2">Recommendation</th>
-          <th class="col-md-2">Description</th>
+          <th class="col-md-4">Description</th>
           <th class="no-sort col-md-2">Submitted by</th>
-          <th class="no-sort col-md-2"></th>
           <th class="col-md-1">Votes</th>
           <th class="no-sort col-md-1"></th>
         </tr>
       </thead>
 
-      <tbody class="list-group">
+      <tbody>
         <% @book.recommendations.each do |recommendation| %>
-          <tr class="list-group-item sort" data-searchstring="
+          <tr data-searchstring="
             <%= recommendation.type.name %>
           ">
             <td><%= recommendation.type.name %></td>
@@ -57,9 +56,8 @@
               Submitted <%= time_ago_in_words(recommendation.created_at) %> ago
               by <%= link_to recommendation.user.username, user_path(recommendation.user) %>
             </td>
-            <td><%= link_to "Upvote", like_recommendation_path(recommendation), method: :put%></td>
             <td><%= (recommendation.get_upvotes.size-recommendation.get_downvotes.size) %></td>
-            <td><%= link_to "Downvote", dislike_recommendation_path(recommendation), method: :put%></td>
+            <td><%= link_to "Upvote", like_recommendation_path(recommendation), method: :put%></br><%= link_to "Downvote", dislike_recommendation_path(recommendation), method: :put%></td>
           </tr>
         <% end %>
       </tbody>
