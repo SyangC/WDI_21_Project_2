@@ -12,7 +12,7 @@
 
 <p>
   <strong>Genre:</strong>
-  <%= @book.genres.name %>
+  <%= @book.genre.name %>
 </p>
 
 <p>
@@ -30,19 +30,24 @@
   <div class="form-group">
     <input placeholder="Search" class="form-control search">
   </div>
-  <button type="button" class="btn btn-default sort">ASC</button>
-  <table>
+  <table class="sortable">
     <thead>
       <tr>
         <th>Category</th>
         <th>Recommendation</th>
         <th>Description</th>
+        <th class="no-sort">Submitted by</th>
+        <th class="no-sort"></th>
+        <th>Votes</th>
+        <th class="no-sort"></th>
       </tr>
     </thead>
 
-    <tbody class="list-group users">
+    <tbody class="list-group">
       <% @book.recommendations.each do |recommendation| %>
-        <tr class="list-group-item" data-searchstring="<%= recommendation.type.name %> ">
+        <tr class="list-group-item sort" data-searchstring="
+          <%= recommendation.type.name %>
+        ">
           <td><%= recommendation.type.name %></td>
           <td><%= link_to recommendation.name, recommendation_path(recommendation) %></td>
           <td><%= recommendation.description %></td>
@@ -51,9 +56,8 @@
             by <%= link_to recommendation.user.username, user_path(recommendation.user) %>
           </td>
           <td><%= link_to "Upvote", like_recommendation_path(recommendation), method: :put%></td>
-          <td><%= recommendation.get_upvotes.size %></td>
+          <td><%= (recommendation.get_upvotes.size-recommendation.get_downvotes.size) %></td>
           <td><%= link_to "Downvote", dislike_recommendation_path(recommendation), method: :put%></td>
-          <td><%= recommendation.get_downvotes.size %></td>
         </tr>
       <% end %>
     </tbody>

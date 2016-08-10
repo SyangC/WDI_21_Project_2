@@ -20,34 +20,35 @@ $(document).on('turbolinks:load', function() {
   $('.comment-reply').click( function(){
     $(this).closest('.comment').find('.reply-form').toggle();
   });
-});
 
-
-$(document).on('turbolinks:load', function() {
-
-  var $tbody = $('.users');
+  var $table = $('.sortable');
+  var $tbody = $table.find('tbody');
   var $trs = $tbody.find('tr');
+  var $ths = $table.find('th:not(.no-sort)');
 
+  function getColumnVal(row, columnIndex) {
+    var val = $(row).find('td:nth-child(' + (columnIndex+1) + ')').text();
+    return isNaN(val) ? val : parseFloat(val);
+  } 
 
-  $('.sort').on('click', function() {
-    var button = this;
+  $ths.on('click', function(){
+    $ths.not(this).removeAttr('class');
+
+    var columnIndex = $(this).index();
+    var direction = $(this).attr('class') === 'asc' ? 'desc' : 'asc'; 
+
+    $(this).attr('class', direction);
+
     $trs.sort(function(a, b) {
-      if($(button).text() === "ASC") {
-        return $(a).data('searchstring') > $(b).data('searchstring');
-      } else {
-        return $(a).data('searchstring') < $(b).data('searchstring');
-      }
+
+      var aVal = getColumnVal(a, columnIndex);
+      var bVal = getColumnVal(b, columnIndex);
+
+      return direction === 'asc' ? aVal > bVal : aVal < bVal;
     }).each(function() {
       $(this).appendTo($tbody);
     });
-
-    if($(button).text() === "ASC") {
-      $(button).text("DESC");
-    } else {
-      $(button).text("ASC");
-    }
-    return false;
-   });
+  });
 
   $('.search').on('keyup', function() {
     var input = this;
