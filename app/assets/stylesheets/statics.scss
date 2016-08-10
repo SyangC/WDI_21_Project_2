@@ -22,6 +22,11 @@
   text-decoration: none;
 }
 
+.enter a:hover, a:visited, a:link, a:active {
+  color: #f2f2f2;
+  text-decoration: none;
+}
+
 .register a:hover, a:visited, a:link, a:active {
   color: #f2f2f2;
   text-decoration: none;
@@ -34,7 +39,7 @@ body.home-background {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: url("2O4DGFJ1Y5.jpg") center center fixed no-repeat;
+  background: url(2O4DGFJ1Y5.jpg) center center fixed no-repeat;
   background-size: cover;
   font-family: "Futura";
   color: #f2f2f2;
