@@ -14,8 +14,21 @@
  *= require_self
  */
 
+body, html {
+  text-align: center;
+}
 
-/* 25BC */
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+  color:black;
+}
+
+header {
+  margin-bottom: 50px;
+}
+
+// sort
+
 table.sortable {
   thead {
     tr {
@@ -38,33 +51,4 @@ table.sortable {
       }
     }
   }
-}
-
-.comments-header {
-  border-bottom: 1px dotted gray;
-  margin-bottom: 10px;
-}
-
-.comments-container {
-  p {
-    margin-bottom: 0px;
-  }
-  .comment-nav {
-    margin-left: 5px;
-    margin-bottom: 10px;
-
-    a {
-      font-size: 10px;
-      font-weight: bold;
-      color: #888;
-    }
-  }
-}
-
-.reply-form {
-  display: none;
-}
-
-.comments-show {
-  margin-left: 25px;
 }

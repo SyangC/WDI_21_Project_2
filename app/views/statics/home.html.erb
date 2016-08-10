@@ -1,2 +1,9 @@
-<h1>Statics#home</h1>
-<p>Find me in app/views/statics/home.html.erb</p>
+<div class="home-shader"></div>
+<div class="home-centered">
+  <h1>A Novel Idea</h1>
+  <p>By book lovers, for book lovers</p>
+  <div class="home-links">
+    <div class="log-in"><%= link_to "Log in", new_user_session_path%></div>
+    <div class="register"><%= link_to "Register", new_user_registration_path%></div>
+  </div>
+</div>

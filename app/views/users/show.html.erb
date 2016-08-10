@@ -22,7 +22,7 @@
 
 <p>
   <b>Avatar:</b>
-  <%= image_tag @user.avatar_image %>
+  <%= image_tag @user.avatar_image.profile.url %>
 </p>
 
 <% if current_user.id == @user.id %>

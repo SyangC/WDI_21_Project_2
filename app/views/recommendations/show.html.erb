@@ -1,18 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-8 col-md-offset-2">
 
-<p>
-  <strong>Name:</strong>
-  <%= @recommendation.name %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @recommendation.description %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @recommendation.name %>
+  </p>
 
-<% if current_user.id == @recommendation.user_id %>
-  <%= link_to 'Edit', edit_recommendation_path(@recommendation) %> |
-<% end %>
-<%= link_to 'Back', book_path(@current_book) %>
+  <p>
+    <strong>Description:</strong>
+    <%= @recommendation.description %>
+  </p>
 
-<%= render partial: "comments/template", locals: {commentable: @recommendation, new_comment: @comment} %> 
+  <% if current_user.id == @recommendation.user_id %>
+    <%= link_to 'Edit', edit_recommendation_path(@recommendation) %> |
+  <% end %>
+  <%= link_to 'Back', book_path(@current_book) %>
+
+  <div class="comments">
+    <%= render partial: "comments/template", locals: {commentable: @recommendation, new_comment: @comment} %> 
+  </div>
+
+</div>

@@ -1,41 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-8 col-md-offset-2">
 
-<h1>Books</h1>
+  <h1>Your Books</h1>
 
-<div>
-  <input placeholder="Search" class="search">
-</div>
+  <div>
+    <input placeholder="Search" class="search">
+  </div>
 
-<table class="sortable">
-  <thead>
-    <tr>
-      <th>Genre</th>
-      <th>Name</th>
-      <th>Author</th>
-      <th class="no-sort">Cover</th>
-      <th class="no-sort">Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% current_user.created_books.each do |book| %>
-      <tr data-searchstring="
-        <%= book.name %>
-        <%= book.author %>
-        <%= book.genre.name %>
-      ">
-        <td><%= book.genre.name %></td>
-        <td><%= link_to book.name, book_path(book) %></td>
-        <td><%= link_to book.author, "https://www.google.co.uk/#q="+book.author+" author" %></td>
-        <td><%= image_tag book.book_image.thumb.url %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <table class="sortable table table-hover table-responsive">
+    <thead>
+      <tr>
+        <th class="col-md-2">Genre</th>
+        <th class="col-md-4">Name</th>
+        <th class="col-md-2">Author</th>
+        <th class="no-sort col-md-1">Cover</th>
+        <th class="no-sort col-md-1"></th>
+        <th class="no-sort col-md-1">Actions</th>
+        <th class="no-sort col-md-1"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% current_user.created_books.each do |book| %>
+        <tr data-searchstring="
+          <%= book.name %>
+          <%= book.author %>
+          <%= book.genre.name %>
+        ">
+          <td><%= book.genre.name %></td>
+          <td><%= link_to book.name, book_path(book) %></td>
+          <td><%= link_to book.author, "https://www.google.co.uk/#q="+book.author+" author" %></td>
+          <td><%= image_tag book.book_image.thumb.url %></td>
+          <td><%= link_to 'Details', book %></td>
+          <td><%= link_to 'Edit', edit_book_path(book) %></td>
+          <td><%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Book', new_book_path %>
+  <br>
+</div>
