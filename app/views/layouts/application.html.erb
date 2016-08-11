@@ -21,6 +21,12 @@
 
   <% if current_page?("/") %>
     <body class="home-background">
+  <% end %>
+  <% if current_page?("/statics/about") %>
+    <body class="about-background">
+  <% end %>
+  <% if current_page?("/statics/contact") %>
+    <body class="contact-background">
   <% else %>
     <body class="all">
   <% end %>

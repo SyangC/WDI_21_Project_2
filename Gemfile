@@ -34,6 +34,7 @@ gem 'acts_as_commentable_with_threading'
 gem 'acts_as_votable'
 gem 'ransack'
 gem 'rmagick'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
