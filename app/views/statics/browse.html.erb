@@ -26,12 +26,12 @@
           <%= book.creator.username %>
           <%= book.genre.name %>
         ">
-          <td><%= book.genre.name %></td>
-          <td><%= link_to book.name, book_path(book) %></td>
-          <td><%= link_to book.author, "https://www.google.co.uk/#q="+book.author+" author" %></td>
-          <td><%= image_tag book.book_image.thumb.url %></td>
-          <td><%= link_to book.creator.username, user_path(book.creator) %></td>
-          <td><%= link_to "Buy now", "https://www.amazon.co.uk/s/ref=nb_sb_noss_1?url=search-alias%3Daps&field-keywords="+book.name+" "+book.author+" book&tbm=shop" %></td>
+          <td class="cl-effect-14"><%= book.genre.name %></td>
+          <td class="cl-effect-14"><%= link_to book.name, book_path(book) %></td>
+          <td class="cl-effect-14"><%= link_to book.author, "https://www.google.co.uk/#q="+book.author+" author" %></td>
+          <td class="cl-effect-14"><%= image_tag book.book_image.thumb.url %></td>
+          <td class="cl-effect-14"><%= link_to book.creator.username, user_path(book.creator) %></td>
+          <td class="cl-effect-14"><%= link_to "Buy now", "https://www.amazon.co.uk/s/ref=nb_sb_noss_1?url=search-alias%3Daps&field-keywords="+book.name+" "+book.author+" book&tbm=shop" %></td>
         </tr>
       <% end %>
     </tbody>

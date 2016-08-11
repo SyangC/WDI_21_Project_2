@@ -30,6 +30,6 @@
     <li class="actions form-button-left">
       <%= f.submit "Submit", :class => "btn btn-primary" %>
     </li>
-    <li class="form-button-right"><%= link_to 'Back', @recommendation, :class => "btn btn-primary" %></li>
+    <li class="form-button-right"><%= link_to 'Back', book_path(@current_book), :class => "btn btn-primary" %></li>
   </ul>
 <% end %>

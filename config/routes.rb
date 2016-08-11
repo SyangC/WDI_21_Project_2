@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :books
-  resources :users
+  resources :users, except: [:index]
   resources :comments
   resources :types
   resources :genres

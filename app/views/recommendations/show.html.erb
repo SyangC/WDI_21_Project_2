@@ -1,7 +1,7 @@
 <div class="col-md-8 col-md-offset-2">
 
   <p>
-    <strong>Name:</strong>
+    <strong>Recommendation:</strong>
     <%= @recommendation.name %>
   </p>
 
@@ -11,9 +11,9 @@
   </p>
 
   <% if current_user.id == @recommendation.user_id %>
-    <%= link_to 'Edit', edit_recommendation_path(@recommendation) %> |
+    <%= link_to 'Edit', edit_recommendation_path(@recommendation), class: "btn btn-primary" %> |
   <% end %>
-  <%= link_to 'Back', book_path(@current_book) %>
+  <%= link_to 'Back', book_path(@current_book), class: "btn btn-primary" %>
 
   <div class="comments">
     <%= render partial: "comments/template", locals: {commentable: @recommendation, new_comment: @comment} %> 
