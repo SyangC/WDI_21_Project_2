@@ -18,8 +18,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :types
   resources :genres
-
-  resources :recommendations do 
+  resources :recommendations, except: [:index] do 
     member do
       put "like", to: "recommendations#upvote"
       put "dislike", to: "recommendations#downvote"
