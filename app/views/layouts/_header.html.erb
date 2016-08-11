@@ -15,8 +15,6 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><%= link_to "Home", statics_home_path %></li>
-          <li><%= link_to "About", statics_about_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Books <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -26,9 +24,10 @@
               <li><%= link_to "Browse all books", statics_browse_path %></li>
             </ul>
           </li>
+          <li><%= link_to "About", statics_about_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Contact", statics_contact_path %></li>
+          <li><%= link_to "Contact us", statics_contact_path %></li>
           <% if current_user %>
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=current_user.username %> <span class="caret"></span></a>
