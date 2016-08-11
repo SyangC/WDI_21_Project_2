@@ -27,8 +27,9 @@
   </div>
 
   <ul class="form-buttons col-md-6 col-md-offset-3">
-    <li class="actions form-button-center">
+    <li class="actions form-button-left">
       <%= f.submit "Submit", :class => "btn btn-primary" %>
     </li>
+    <li class="form-button-right"><%= link_to 'Back', @recommendation, :class => "btn btn-primary" %></li>
   </ul>
 <% end %>
