@@ -16,8 +16,6 @@ Rails.application.routes.draw do
   resources :books
   resources :users, except: [:index]
   resources :comments
-  resources :types
-  resources :genres
   resources :recommendations, except: [:index] do 
     member do
       put "like", to: "recommendations#upvote"
