@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= f.label :Recommendation %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class:"form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, class:"form-control" %>
   </div>
 
   <div class="field">
@@ -26,7 +26,9 @@
     <%= f.collection_select :type_id, Type.all, :id, :name %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <ul class="form-buttons col-md-6 col-md-offset-3">
+    <li class="actions form-button-center">
+      <%= f.submit "Submit", :class => "btn btn-primary" %>
+    </li>
+  </ul>
 <% end %>

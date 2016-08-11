@@ -170,7 +170,7 @@ body {
 }
 
 main div {
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 .container .text-muted {
   margin: 20px 0;
@@ -196,13 +196,35 @@ ul.form-buttons li, .form-buttons {
   z-index: 2;
 }
 
-.new-book, .edit-book, .edit-user, .new-user, .new-user-session {
+.new-book, .edit-book, .edit-user, .new-user, .new-user-session, .new-recommendation {
   text-align: left;
 }
 
-.new-book h1, .edit-book h1, .edit-user h2, .new-user h1, .new-user-session h2, .cancel h4 {
+.new-book h1, .edit-book h1, .edit-user h2, .new-user h1, .new-user-session h2, .cancel h4, .new-recommendation h1, .books h4 {
+  margin-bottom: 30px;
   text-align: center;
 }
+
+.profile-image {
+  width: 320px;
+  height: 320px;
+}
+
+.navbar-image {
+  width: 20px;
+  height: 20px;
+}
+
+.book-recommendations {
+  padding-top: 20px;
+  font-size: 12px;
+}
+
+.book-info {
+  text-align: left;
+}
+
+// home link button
 
 *,
 *:after,

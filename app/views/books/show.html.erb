@@ -1,70 +1,70 @@
 <div class="col-md-10 col-md-offset-1 books">
+  <div class="col-md-4 book-info">
+    <p>
+      <%= image_tag @book.book_image.cover.url %>
+    </p>
+    <div class="col-md-10 col-md-offset-1">
+      <p>
+        <strong>Name:</strong>
+        <%= @book.name %>
+      </p>
 
-  <p id="notice"><%= notice %></p>
+      <p>
+        <strong>Author:</strong>
+        <%= @book.author %>
+      </p>
 
-  <p>
-    <strong>Name:</strong>
-    <%= @book.name %>
-  </p>
+      <p>
+        <strong>Genre:</strong>
+        <%= @book.genre.name %>
+      </p>
 
-  <p>
-    <strong>Author:</strong>
-    <%= @book.author %>
-  </p>
-
-  <p>
-    <strong>Genre:</strong>
-    <%= @book.genre.name %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= @book.creator.username %>
-  </p>
-
-  <p>
-    <b>Cover:</b>
-    <%= image_tag @book.book_image.url %>
-  </p>
-
-  <p>
-    <strong>Recommendations:</strong>
-    <div class="form-group">
-      <input placeholder="Search" class="search">
+      <p>
+        <strong>User:</strong>
+        <%= @book.creator.username %>
+      </p>
     </div>
-    <table class="sortable table table-hover table-responsive">
-      <thead>
-        <tr>
-          <th class="col-md-1">Category</th>
-          <th class="col-md-2">Recommendation</th>
-          <th class="col-md-4">Description</th>
-          <th class="no-sort col-md-2">Submitted by</th>
-          <th class="col-md-1">Votes</th>
-          <th class="no-sort col-md-1"></th>
-          <th class="no-sort col-md-1">Comments</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @book.recommendations.each do |recommendation| %>
-          <tr data-searchstring="
-            <%= recommendation.type.name %>
-          ">
-            <td><%= recommendation.type.name %></td>
-            <td><%= recommendation.name %></td>
-            <td><%= recommendation.description %></td>
-            <td>
-              Submitted <%= time_ago_in_words(recommendation.created_at) %> ago
-              by <%= link_to recommendation.user.username, user_path(recommendation.user) %>
-            </td>
-            <td><%= (recommendation.get_upvotes.size-recommendation.get_downvotes.size) %></td>
-            <td><%= link_to "Upvote", like_recommendation_path(recommendation), method: :put%></br><%= link_to "Downvote", dislike_recommendation_path(recommendation), method: :put%></td>
-            <td><%= link_to recommendation.comment_threads.count, recommendation_path(recommendation) %></td>
+  </div>
+  <div class="book-recommendations col-md-8">
+    <p>
+      <h4><strong>Recommendations:</strong></h4>
+      <div class="form-group">
+        <input placeholder="Search" class="search form-control">
+      </div>
+      <table class="sortable table table-hover table-responsive">
+        <thead>
+          <tr>
+            <th class="col-md-1">Category</th>
+            <th class="col-md-2">Recs</th>
+            <th class="no-sort col-md-4">Description</th>
+            <th class="no-sort col-md-2">Uploader</th>
+            <th class="col-md-1">Votes</th>
+            <th class="no-sort col-md-1"></th>
+            <th class="no-sort col-md-1">Comments</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </p>
+        </thead>
 
-  <%= link_to 'New Recommendation', new_recommendation_path %>
+        <tbody>
+          <% @book.recommendations.each do |recommendation| %>
+            <tr data-searchstring="
+              <%= recommendation.type.name %>
+            ">
+              <td><%= recommendation.type.name %></td>
+              <td><%= link_to recommendation.name, recommendation_path(recommendation) %></td>
+              <td><%= recommendation.description %></td>
+              <td>
+                <%= time_ago_in_words(recommendation.created_at) %> ago
+                by <%= link_to recommendation.user.username, user_path(recommendation.user) %>
+              </td>
+              <td><%= (recommendation.get_upvotes.size-recommendation.get_downvotes.size) %></td>
+              <td><%= link_to "Upvote", like_recommendation_path(recommendation), method: :put%></br><%= link_to "Downvote", dislike_recommendation_path(recommendation), method: :put%></td>
+              <td><%= link_to recommendation.comment_threads.count, recommendation_path(recommendation) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </p>
+
+    <%= link_to 'New Recommendation', new_recommendation_path, class: "btn btn-primary" %>
+  </div>
 </div>

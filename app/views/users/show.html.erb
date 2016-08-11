@@ -1,30 +1,30 @@
+<div class="col-md-10 col-md-offset-1">
 
+  <p class="col-md-4">
+    <%= image_tag @user.avatar_image.avatar.url, class:"profile-image" %>
+  </p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+  <p class="col-md-2">
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+  <p class="col-md-2">
+    <strong>First name:</strong>
+    <%= @user.first_name %>
+  </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+  <p class="col-md-2">
+    <strong>Last name:</strong>
+    <%= @user.last_name %>
+  </p>
 
-<p>
-  <strong>Bio:</strong>
-  <%= @user.bio %>
-</p>
+  <p class="col-md-2">
+    <strong>Bio:</strong>
+    <%= @user.bio %>
+  </p>
 
-<p>
-  <b>Avatar:</b>
-  <%= image_tag @user.avatar_image.profile.url %>
-</p>
-
-<% if current_user.id == @user.id %>
-  <p><%= link_to "Edit profile", edit_user_registration_path %></p>
-<% end %>
+  <% if current_user.id == @user.id %>
+    <p><%= link_to "Edit profile", edit_user_registration_path %></p>
+  <% end %>
+</div>
