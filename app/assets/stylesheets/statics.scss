@@ -4,9 +4,9 @@
   margin-top: 30px;
   display: inline-block;
   padding: 0 30px;
-  font-size: 23px;
-  width: 60%;
-  min-width: 275px;
+  font-size: 22px;
+  width: 70%;
+  min-width: 300px;
 }
 
 .log-in {
@@ -15,21 +15,6 @@
 
 .register {
   float: right;
-}
-
-.log-in a:hover, a:visited, a:link, a:active {
-  color: #f2f2f2;
-  text-decoration: none;
-}
-
-.enter a:hover, a:visited, a:link, a:active {
-  color: #f2f2f2;
-  text-decoration: none;
-}
-
-.register a:hover, a:visited, a:link, a:active {
-  color: #f2f2f2;
-  text-decoration: none;
 }
 
 
@@ -59,3 +44,5 @@
 .home-centered p {
   font-size: 18px;
 }
+
+

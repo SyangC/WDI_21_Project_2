@@ -30,8 +30,11 @@
     <%= f.label :genre_id %>
     <%= f.collection_select :genre_id, Genre.all, :id, :name %>
   </div>
+  <ul class="form-buttons col-md-6 col-md-offset-3">
+    <li class="actions form-button-right">
+      <%= f.submit "Submit", :class => "btn btn-primary" %>
+    </li>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <li><%= link_to 'Back', books_path, class: "btn btn-primary form-button-left" %></li>
+  </ul>
 <% end %>

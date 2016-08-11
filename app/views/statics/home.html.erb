@@ -1,13 +1,15 @@
 <div class="home-shader"></div>
 <div class="home-centered">
+
   <h1>A Novel Idea</h1>
+
   <p>By book lovers, for book lovers</p>
-  <div class="home-links">
+  <nav class="home-links cl-effect-21">
     <% if current_user %>
-      <div class="enter"><%= link_to "Enter", statics_browse_path%></div>
+      <%= link_to "Enter", statics_browse_path, class: "enter"%>
     <% else %>
-      <div class="log-in"><%= link_to "Log in", new_user_session_path%></div>
-      <div class="register"><%= link_to "Register", new_user_registration_path%></div>
+      <%= link_to "Log in", new_user_session_path, class:"log-in"%>
+      <%= link_to "Register", new_user_registration_path, class: "register"%>
     <% end %>
-  </div>
+  </nav>
 </div>

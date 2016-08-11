@@ -102,7 +102,7 @@ body.all {
 }
 
 header {
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 body.home-background {
@@ -170,9 +170,115 @@ body {
 }
 
 main div {
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 .container .text-muted {
   margin: 20px 0;
 }
 
+ul.form-buttons li, .form-buttons {
+  text-decoration: none;
+  list-style: none;
+  display:inline-block; 
+}
+
+.form-button-right {
+  float: right;
+}
+
+.form-button-left {
+  float: left;
+}
+
+.form-button-center {
+  margin-left:50%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+}
+
+.new-book, .edit-book, .edit-user, .new-user, .new-user-session {
+  text-align: left;
+}
+
+.new-book h1, .edit-book h1, .edit-user h1, .new-user h1, .new-user-session h2 {
+  text-align: center;
+}
+
+*,
+*:after,
+*::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+nav.home-links a {
+  position: relative;
+  display: inline-block;
+  margin: 15px 25px;
+  outline: none;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 1px rgba(255,255,255,0.3);
+}
+
+nav.home-links a:hover,
+nav.home-links a:focus {
+  outline: none;
+}
+.cl-effect-21 a {
+  padding: 10px;
+  color: #237546;
+  text-shadow: none;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.cl-effect-21 a::before,
+.cl-effect-21 a::after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  content: '';
+  opacity: 0;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  -moz-transition: opacity 0.3s, -moz-transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+
+.cl-effect-21 a::before {
+  top: 0;
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+
+.cl-effect-21 a::after {
+  bottom: 0;
+  -webkit-transform: translateY(10px);
+  -moz-transform: translateY(10px);
+  transform: translateY(10px);
+}
+
+.cl-effect-21 a:hover,
+.cl-effect-21 a:focus {
+  color: #fff;
+}
+
+.cl-effect-21 a:hover::before,
+.cl-effect-21 a:focus::before,
+.cl-effect-21 a:hover::after,
+.cl-effect-21 a:focus::after {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  transform: translateY(0px);
+}
