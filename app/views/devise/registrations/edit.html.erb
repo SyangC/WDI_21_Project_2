@@ -58,14 +58,17 @@
       <%= f.password_field :current_password, autocomplete: "off", class:"form-control" %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "Update" %>
-    </div>
+    <ul class="form-buttons col-md-6 col-md-offset-3">
+      <li class="actions form-button-left">
+        <%= f.submit "Update", :class => "btn btn-primary" %>
+      </li>
+      <li class="form-button-right"><%= link_to "Back", :back, :class => "btn btn-primary" %></li>
+    </ul>
   <% end %>
+  <div class="col-md-12 cancel">
+    <h4>Cancel my account</h4>
 
-  <h3>Cancel my account</h3>
-
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-  <%= link_to "Back", :back %>
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-danger", data: { confirm: "Are you sure?" }, method: :delete %></p>
+  </div>
+  
 </div>
