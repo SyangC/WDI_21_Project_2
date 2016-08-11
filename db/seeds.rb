@@ -1,16 +1,16 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# The data can then be loaded with the rails db:seed command (or create! alongside the database with db:setup).
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create![{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create!name: 'Luke', movie: movies.first)
 
 def seed_image(file_name)
   File.open(File.join(Rails.root, "/app/assets/images/seed/#{file_name}"))
 end
 
-u1 = User.create (
+u1 = User.create!(
   {
     username: "shuisawesome",
     first_name: "Shu-yang",
@@ -22,7 +22,7 @@ u1 = User.create (
     password_confirmation: "password"
   })
 
-u2 = User.create (
+u2 = User.create!(
   {
     username: "kittycat",
     first_name: "Cat",
@@ -34,7 +34,7 @@ u2 = User.create (
     password_confirmation: "password"
   })
 
-u3 = User.create (
+u3 = User.create!(
   {
     username: "Andy",
     first_name: "Xiang",
@@ -47,83 +47,83 @@ u3 = User.create (
   })
 
 
-g1 = Genre.create (
+g1 = Genre.create!(
   {
     name: "Bildungsroman"
   })
 
-g2 = Genre.create (
+g2 = Genre.create!(
   {
     name: "Romance"
   })
 
-g3 = Genre.create (
+g3 = Genre.create!(
   {
     name: "Science Fiction"
   })
 
-g4 = Genre.create (
+g4 = Genre.create!(
   {
     name: "Satire"
   })
 
-g5 = Genre.create (
+g5 = Genre.create!(
   {
     name: "Drama"
   })
 
-g6 = Genre.create (
+g6 = Genre.create!(
   {
     name: "Black Comedy"
   })
-g7 = Genre.create (
+g7 = Genre.create!(
   {
     name: "Horror"
   })
-g8 = Genre.create (
+g8 = Genre.create!(
   {
     name: "Psychological"
   })
-g9 = Genre.create (
+g9 = Genre.create!(
   {
     name: "Existential Ennui"
   })
-g10 = Genre.create (
+g10 = Genre.create!(
   {
     name: "Magic Realism"
   })
-g11 = Genre.create (
+g11 = Genre.create!(
   {
     name: "Philosophical"
   })
-g12 = Genre.create (
+g12 = Genre.create!(
   {
     name: "Fantasy"
   })
-g13 = Genre.create (
+g13 = Genre.create!(
   {
     name: "Poetry"
   })
 
 
-t1 = Type.create (
+t1 = Type.create!(
   {
     name: "Location"
   })
-t2 = Type.create (
+t2 = Type.create!(
   {
     name: "Food & Drink"
   })
-t3 = Type.create (
+t3 = Type.create!(
   {
     name: "Music"
   })
-t4 = Type.create (
+t4 = Type.create!(
   {
     name: "Miscellaneous"
   })
 
-b1 = Book.create (
+b1 = Book.create!(
   {
     name: "Lolita",
     author: "Vladimir Nabokov",
@@ -132,7 +132,7 @@ b1 = Book.create (
     genre_id: g6.id
   })
 
-b2 = Book.create (
+b2 = Book.create!(
   {
     name: "One Hundred Years of Solitude",
     author: "Gabriel García Márquez",
@@ -141,7 +141,7 @@ b2 = Book.create (
     genre_id: g10.id
   })
 
-b3 = Book.create (
+b3 = Book.create!(
   {
     name: "Norwegian Wood",
     author: "Haruki Murakami",
@@ -150,7 +150,7 @@ b3 = Book.create (
     genre_id: g1.id
   })
 
-b4 = Book.create (
+b4 = Book.create!(
   {
     name: "Mr. Tickle",
     author: "Roger Hargreaves",
@@ -159,7 +159,7 @@ b4 = Book.create (
     genre_id: g7.id
   })
 
-b5 = Book.create (
+b5 = Book.create!(
   {
     name: "Stoner",
     author: "John Williams",
@@ -168,7 +168,7 @@ b5 = Book.create (
     genre_id: g9.id
   })
 
-b6 = Book.create (
+b6 = Book.create!(
   {
     name: "The Pciture of Dorian Grey",
     author: "Oscar Wilde",
@@ -177,7 +177,7 @@ b6 = Book.create (
     genre_id: g9.id
   })
 
-b7 = Book.create (
+b7 = Book.create!(
   {
     name: "Hunger",
     author: "Knut Hamsun",
@@ -186,7 +186,7 @@ b7 = Book.create (
     genre_id: g8.id
   })
 
-b8 = Book.create (
+b8 = Book.create!(
   {
     name: "Hangover Square",
     author: "Patrick Hamilton",
@@ -195,7 +195,7 @@ b8 = Book.create (
     genre_id: g6.id
   })
 
-b9 = Book.create (
+b9 = Book.create!(
   {
     name: "Do Androids Dream of Electric Sheep",
     author: "Philip K. Dick",
@@ -204,7 +204,7 @@ b9 = Book.create (
     genre_id: g3.id
   })
 
-b10 = Book.create (
+b10 = Book.create!(
   {
     name: "The Name of the Wind",
     author: "Patrick Rothfuss",
@@ -213,7 +213,7 @@ b10 = Book.create (
     genre_id: g12.id
   })
 
-b11 = Book.create (
+b11 = Book.create!(
   {
     name: "Brand New Ancients",
     author: "Kate Tempest",
