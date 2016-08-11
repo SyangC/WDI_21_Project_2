@@ -88,22 +88,42 @@
     }
   }
 
+html {
+  text-align: center;
+  font-family: "Helvetica Neue"; 
+  color: #565254; 
+}
 
-body, html {
+body.all {
   text-align: center;
   font-family: "Helvetica Neue";
+  background-color: #FBFEF9;
+  color: #565254; 
 }
 
 header {
   margin-bottom: 50px;
 }
 
-div.books table a {
-  color: black;
+body.home-background {
+  margin: 0 auto;
+  text-align: center;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background: url(2O4DGFJ1Y5.jpg) center center fixed no-repeat;
+  background-size: cover;
+  font-family: "Futura";
+  color: #f2f2f2;
 }
 
-div.books a {
-  color: black;
+body.home-background main div {
+  margin-bottom: 0px;
+}
+
+div.books table a {
+  color: #565254;
 }
 
 // sort
