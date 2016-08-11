@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_many :created_books, class_name: "Book", foreign_key: "user_id", dependent: :destroy
   has_and_belongs_to_many :books_commenting, class_name: "Book", join_table: "books_users"
 
-  has_many :recommendations
+  has_many :recommendations, dependent: :destroy
 
 end
